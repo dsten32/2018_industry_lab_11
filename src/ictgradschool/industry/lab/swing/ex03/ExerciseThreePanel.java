@@ -10,6 +10,7 @@ import java.awt.*;
  */
 public class ExerciseThreePanel extends JPanel {
 
+
     /** All outlines should be drawn this color. */
     private static final Color OUTLINE_COLOR = Color.black;
 

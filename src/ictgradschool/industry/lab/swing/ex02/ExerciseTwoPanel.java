@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * A simple JPanel that allows users to add or subtract numbers.
  *
- * TODO Complete this class. No hints this time :)
+ * TODOne Complete this class. No hints this time :)
  */
 public class ExerciseTwoPanel extends JPanel implements ActionListener {
     private JButton add,subtract;

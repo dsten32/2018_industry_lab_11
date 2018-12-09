@@ -1,6 +1,7 @@
 package ictgradschool.industry.lab.swing.ex01;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +15,7 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
 
     // TODOne Declare JTextFields and JButtons as instance variables here.
     private JButton calculateBMIButton,calculateHealthyWeight;
-    private JTextField heightInM,weightInKg,BMI,maxHealthyWeight;
+    private JTextField heightInM,weightInKg,BMI,maxHealthyWeight,err;
     double vHeight,vWeight;
 
     /**
@@ -37,6 +38,12 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
         calculateHealthyWeight = new JButton("Calculate Healthy Weight");
 
         maxHealthyWeight = new JTextField((10));
+
+        err = new JTextField(50){
+          @Override public void setBorder(Border border){
+
+          }
+        };
 
         // TODOne Declare and construct JLabels
         // Note: These ones don't need to be accessed anywhere else so it makes sense just to declare them here as
@@ -68,6 +75,10 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
         this.add(maxHealthy);
         this.add(maxHealthyWeight);
 
+
+        this.add(err);
+
+
         // TODOne Add Action Listeners for the JButtons
         calculateBMIButton.addActionListener(this);
         calculateHealthyWeight.addActionListener(this);
@@ -87,21 +98,34 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
         // Hint #2: JTextField's getText() method will get the value in the text box, as a String.
         // Hint #3: JTextField's setText() method will allow you to pass it a String, which will be diaplayed in the text box.
         if(event.getSource()==calculateBMIButton){
+
+            try {
             vHeight= Double.parseDouble(heightInM.getText());
             vWeight = Double.parseDouble(weightInKg.getText());
-            String yourBMI = String.valueOf(roundTo2DecimalPlaces(vWeight / (Math.pow(vHeight,2))));
 
-            BMI.setText(yourBMI);
+            String yourBMI = String.valueOf(roundTo2DecimalPlaces(vWeight / (Math.pow(vHeight,2))));
+                BMI.setText(yourBMI);
+            } catch (NumberFormatException e) {
+                err.setText("You haven't filled the height and weight, or you didn't use numbers");
+            }
+
+
+
+
         }
 
 
-        if(event.getSource()==calculateHealthyWeight){
-            vHeight= Double.parseDouble(heightInM.getText());
-            vWeight = Double.parseDouble(weightInKg.getText());
+        if(event.getSource()==calculateHealthyWeight) {
+            try {
+                vHeight = Double.parseDouble(heightInM.getText());
+                vWeight = Double.parseDouble(weightInKg.getText());
 
-            String maxWeight = String.valueOf(roundTo2DecimalPlaces(24.9 * (Math.pow(vHeight,2))));
+                String maxWeight = String.valueOf(roundTo2DecimalPlaces(24.9 * (Math.pow(vHeight, 2))));
 
-            maxHealthyWeight.setText(maxWeight);
+                maxHealthyWeight.setText(maxWeight);
+            } catch (NumberFormatException e) {
+                err.setText("You haven't filled the height and weight, or you didn't use numbers");
+            }
         }
 
     }
