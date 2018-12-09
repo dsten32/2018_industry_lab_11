@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
 public class ExerciseOnePanel extends JPanel implements ActionListener {
 
     // TODO Declare JTextFields and JButtons as instance variables here.
-    private JButton calculateBMIButton;
+    private JButton calculateBMIButton,calculateHealthyWeight;
+    private JTextField heightInM,weightInKg,BMI,maxHealthyWeight;
 
     /**
      * Creates a new ExerciseOnePanel.
@@ -22,13 +23,45 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
         // TODO Construct JTextFields and JButtons.
         // HINT: Declare them as instance variables so that other methods in this class (e.g. actionPerformed) can
         // also access them.
+        heightInM = new JTextField(12);
+
+        weightInKg = new JTextField(12);
+
+        calculateBMIButton = new JButton("Calculate BMI");
+
+        BMI = new JTextField(12);
+
+        calculateHealthyWeight = new JButton("Calculate Healthy Weight");
+
+        maxHealthyWeight = new JTextField(12);
 
         // TODO Declare and construct JLabels
         // Note: These ones don't need to be accessed anywhere else so it makes sense just to declare them here as
         // local variables, rather than instance variables.
+        JLabel height = new JLabel("Height in metres:");
+        JLabel weight = new JLabel("Weight in kilograms:");
+
+        JLabel BMILabel = new JLabel("Your Body Mass Index is:");
+
+        JLabel maxHealthy = new JLabel("Maximum Healthy Weight for your Height is:");
 
         // TODO Add JLabels, JTextFields and JButtons to window.
         // Note: The default layout manager, FlowLayout, will be fine (but feel free to experiment with others if you want!!)
+        this.add(height);
+        this.add(heightInM);
+
+        this.add(weight);
+        this.add(weightInKg);
+
+        this.add(calculateBMIButton);
+
+        this.add(BMILabel);
+        this.add(BMI);
+
+        this.add(calculateHealthyWeight);
+
+        this.add(maxHealthy);
+        this.add(maxHealthyWeight);
 
         // TODO Add Action Listeners for the JButtons
 
