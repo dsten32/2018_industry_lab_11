@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class ExerciseOnePanel extends JPanel implements ActionListener {
 
-    // TODO Declare JTextFields and JButtons as instance variables here.
+    // TODOne Declare JTextFields and JButtons as instance variables here.
     private JButton calculateBMIButton,calculateHealthyWeight;
     private JTextField heightInM,weightInKg,BMI,maxHealthyWeight;
     double vHeight,vWeight;
@@ -23,7 +23,7 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
     public ExerciseOnePanel() {
         setBackground(Color.white);
 
-        // TODO Construct JTextFields and JButtons.
+        // TODOne Construct JTextFields and JButtons.
         // HINT: Declare them as instance variables so that other methods in this class (e.g. actionPerformed) can
         // also access them.
         heightInM = new JTextField((10));
@@ -38,7 +38,7 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
 
         maxHealthyWeight = new JTextField((10));
 
-        // TODO Declare and construct JLabels
+        // TODOne Declare and construct JLabels
         // Note: These ones don't need to be accessed anywhere else so it makes sense just to declare them here as
         // local variables, rather than instance variables.
         JLabel height = new JLabel("Height in metres:");
@@ -48,7 +48,7 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
 
         JLabel maxHealthy = new JLabel("Maximum Healthy Weight for your Height is:");
 
-        // TODO Add JLabels, JTextFields and JButtons to window.
+        // TODOne Add JLabels, JTextFields and JButtons to window.
         // Note: The default layout manager, FlowLayout, will be fine (but feel free to experiment with others if you want!!)
 
 
@@ -68,7 +68,7 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
         this.add(maxHealthy);
         this.add(maxHealthyWeight);
 
-        // TODO Add Action Listeners for the JButtons
+        // TODOne Add Action Listeners for the JButtons
         calculateBMIButton.addActionListener(this);
         calculateHealthyWeight.addActionListener(this);
 
@@ -82,7 +82,7 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
      */
     public void actionPerformed(ActionEvent event) {
 
-        // TODO Implement this method.
+        // TODOne Implement this method.
         // Hint #1: event.getSource() will return the button which was pressed.
         // Hint #2: JTextField's getText() method will get the value in the text box, as a String.
         // Hint #3: JTextField's setText() method will allow you to pass it a String, which will be diaplayed in the text box.
