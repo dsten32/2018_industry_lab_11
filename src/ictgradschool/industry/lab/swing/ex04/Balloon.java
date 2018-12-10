@@ -47,6 +47,7 @@ public class Balloon {
      */
     public void setDirection(Direction direction) {
         this.direction = direction;
+        System.out.println(direction);
     }
 
     /**
@@ -55,6 +56,18 @@ public class Balloon {
     public void move() {
         if (direction == Direction.Right) {
             x = x + speed;
+        }
+
+        if (direction == Direction.Left) {
+            x = x - speed;
+        }
+
+        if (direction == Direction.Up) {
+            y = y - speed;
+        }
+
+        if (direction == Direction.Down) {
+            y = y + speed;
         }
         // TODO Complete the code for the other directions
         

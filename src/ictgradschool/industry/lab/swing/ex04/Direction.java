@@ -5,5 +5,5 @@ package ictgradschool.industry.lab.swing.ex04;
  */
 public enum Direction {
 
-    Up, Down, Left, Right;
+    Up, Down, Left, Right
 }

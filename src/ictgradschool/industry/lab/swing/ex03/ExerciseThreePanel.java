@@ -70,7 +70,7 @@ public class ExerciseThreePanel extends JPanel {
         // TODO Draw a house, as shown in the lab handout.
 
 
-        //triangle code
+        //roof
         int xpoints[] = {left+0*size,left+5*size,left+10*size};
         int ypoints[] = {top+5*size,top+0*size,top+5*size};
         g.setColor(ROOF_COLOR);

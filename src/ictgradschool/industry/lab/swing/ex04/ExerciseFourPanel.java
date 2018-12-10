@@ -4,11 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Displays an animated balloon.
  */
-public class ExerciseFourPanel extends JPanel implements ActionListener {
+public class ExerciseFourPanel extends JPanel implements ActionListener, KeyListener {
 
     private  Balloon balloon;
     private  JButton moveButton;
@@ -24,6 +26,8 @@ public class ExerciseFourPanel extends JPanel implements ActionListener {
         this.moveButton = new JButton("Move balloon");
         this.moveButton.addActionListener(this);
         this.add(moveButton);
+
+        this.addKeyListener(this);
 
     }
 
@@ -55,5 +59,36 @@ public class ExerciseFourPanel extends JPanel implements ActionListener {
         
         // Sets focus outside of actionPerformed so key presses work without pressing the button
         requestFocusInWindow();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    int direction = e.getKeyCode();
+
+    switch (direction){
+        case 37:
+            balloon.setDirection(Direction.Left);
+            return;
+        case 38:
+            balloon.setDirection(Direction.Up);
+            return;
+        case 39:
+            balloon.setDirection(Direction.Right);
+            return;
+        case 40:
+            balloon.setDirection(Direction.Down);
+            return;
+    }
+        System.out.println(direction);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
