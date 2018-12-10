@@ -15,6 +15,7 @@ public class Balloon {
     private int y;
     private int size;
     private int speed;
+    private Direction last;
     
     // This variable stores the current direction of the face
     private Direction direction;
@@ -46,8 +47,16 @@ public class Balloon {
      * @param direction the new direction
      */
     public void setDirection(Direction direction) {
+        if(direction!=Direction.None){
+            this.last=this.direction;
+            System.out.println(last);
+        }
+
         this.direction = direction;
-        System.out.println(direction);
+    }
+
+    public Direction getLastDirection(){
+        return this.last;
     }
 
     /**
@@ -69,7 +78,7 @@ public class Balloon {
         if (direction == Direction.Down) {
             y = y + speed;
         }
-        // TODO Complete the code for the other directions
+        // TODOne Complete the code for the other directions
         
     }
 

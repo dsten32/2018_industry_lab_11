@@ -6,14 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Displays an animated balloon.
  */
 public class ExerciseFourPanel extends JPanel implements ActionListener, KeyListener {
-
+private List<Balloon> balloons;
     private  Balloon balloon;
     private  JButton moveButton;
+    private Timer timer;
+
 
     /**
      * Creates a new ExerciseFourPanel.
@@ -21,13 +25,29 @@ public class ExerciseFourPanel extends JPanel implements ActionListener, KeyList
     public ExerciseFourPanel() {
         setBackground(Color.white);
 
-        this.balloon = new Balloon(30, 60);
+        this.balloons= new ArrayList<>();
+
+        int numBalloons = (int)(Math.random()*100);
+        System.out.println(numBalloons);
+
+        for (int i = 0; i < numBalloons; i++) {
+            balloons.add(new Balloon((int)(Math.random()*500),(int)(Math.random()*500)));
+        }
+        System.out.println(balloons.size());
+
+
+//        this.balloon = new Balloon(30, 60);
+
 
         this.moveButton = new JButton("Move balloon");
         this.moveButton.addActionListener(this);
         this.add(moveButton);
 
         this.addKeyListener(this);
+
+        this.timer = new Timer(100, this);
+
+
 
     }
 
@@ -38,7 +58,7 @@ public class ExerciseFourPanel extends JPanel implements ActionListener, KeyList
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        balloon.move();
+    balloon.move();
 
         // Sets focus to the panel itself, rather than the JButton. This way, the panel can continue to generate key
         // events even after we've clicked the button.
@@ -68,9 +88,12 @@ public class ExerciseFourPanel extends JPanel implements ActionListener, KeyList
 
     @Override
     public void keyPressed(KeyEvent e) {
-    int direction = e.getKeyCode();
+        this.timer.start();
 
-    switch (direction){
+//    int direction  ;
+//        System.out.println(last);
+
+    switch (e.getKeyCode()){
         case 37:
             balloon.setDirection(Direction.Left);
             return;
@@ -83,8 +106,15 @@ public class ExerciseFourPanel extends JPanel implements ActionListener, KeyList
         case 40:
             balloon.setDirection(Direction.Down);
             return;
+        case 83:
+            if(balloon.getLastDirection()!=Direction.None){
+                balloon.setDirection(Direction.None);
+            } else {
+                balloon.setDirection(balloon.getLastDirection());
+            }
+
     }
-        System.out.println(direction);
+//        System.out.println(direction);
     }
 
     @Override
