@@ -1,5 +1,8 @@
 package ictgradschool.industry.lab.swing.ex03;
 
+import ictgradschool.industry.lab.swing.examples.example7.E7Shape;
+import ictgradschool.industry.lab.swing.examples.example7.E7ShapeTriangle;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -65,5 +68,65 @@ public class ExerciseThreePanel extends JPanel {
     private void drawHouse(Graphics g, int left, int top, int size) {
 
         // TODO Draw a house, as shown in the lab handout.
+
+
+        //triangle code
+        int xpoints[] = {left+0*size,left+5*size,left+10*size};
+        int ypoints[] = {top+5*size,top+0*size,top+5*size};
+        g.setColor(ROOF_COLOR);
+        g.fillPolygon(xpoints,ypoints,3);
+        g.setColor(OUTLINE_COLOR);
+        g.drawPolygon(xpoints,ypoints,3);
+
+        //Outside of house
+        g.setColor(MAIN_COLOR);
+        g.fillRect(left+0*size,top+5*size,10*size,7*size);
+        g.setColor(OUTLINE_COLOR);
+        g.drawRect(left+0*size,top+5*size,10*size,7*size);
+
+        //window1
+        g.setColor(WINDOW_COLOR);
+        g.fillRect(left+1*size,top+7*size,1*size,1*size);
+        g.fillRect(left+1*size,top+8*size,1*size,1*size);
+        g.fillRect(left+2*size,top+7*size,1*size,1*size);
+        g.fillRect(left+2*size,top+8*size,1*size,1*size);
+        g.setColor(OUTLINE_COLOR);
+        g.drawRect(left+1*size,top+7*size,1*size,1*size);
+        g.drawRect(left+1*size,top+8*size,1*size,1*size);
+        g.drawRect(left+2*size,top+7*size,1*size,1*size);
+        g.drawRect(left+2*size,top+8*size,1*size,1*size);
+
+        //window2
+        g.setColor(WINDOW_COLOR);
+        g.fillRect(left+7*size,top+7*size,1*size,1*size);
+        g.fillRect(left+7*size,top+8*size,1*size,1*size);
+        g.fillRect(left+8*size,top+7*size,1*size,1*size);
+        g.fillRect(left+8*size,top+8*size,1*size,1*size);
+        g.setColor(OUTLINE_COLOR);
+        g.drawRect(left+7*size,top+7*size,1*size,1*size);
+        g.drawRect(left+7*size,top+8*size,1*size,1*size);
+        g.drawRect(left+8*size,top+7*size,1*size,1*size);
+        g.drawRect(left+8*size,top+8*size,1*size,1*size);
+
+
+
+        //door
+        g.setColor(DOOR_COLOR);
+        g.fillRect(left+4*size,top+8*size,2*size,4*size);
+        g.setColor(OUTLINE_COLOR);
+        g.drawRect(left+4*size,top+8*size,2*size,4*size);
+
+        //chimney
+
+        int chimXPoints[] = {left+8*size,left+7*size,left+7*size,left+8*size};
+        int chimYPoints[] = {top+3*size,top+2*size,top+1*size,top+1*size};
+        g.setColor(CHIMNEY_COLOR);
+        g.fillPolygon(chimXPoints,chimYPoints,4);
+        g.drawPolygon(chimXPoints,chimYPoints,4);
+
+
+
+
+
     }
 }
