@@ -21,7 +21,7 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
 
     /** The current location of the user's pressed mouse, if any */
     private Point mouseDownPoint2 = null;
-
+private Rectangle temp;
 
     /**
      * Creates a new ExerciseFivePanel.
@@ -30,6 +30,10 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
         setBackground(Color.white);
 
         // TODO Add this panel as a mouse listener and mouse motion listener to itself.
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
+
+
     }
 
     /**
@@ -38,7 +42,8 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
      */
     @Override
     public void mousePressed(MouseEvent e) {
-
+        mouseDownPoint1=e.getPoint();
+repaint();
     }
 
     /**
@@ -48,7 +53,17 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
      */
     @Override
     public void mouseReleased(MouseEvent e) {
+        mouseDownPoint2=e.getPoint();
+        Color colour=new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
 
+        int thickness=(int)(Math.random()*10)+1;
+        for (int i = 0; i < thickness; i++) {
+            shapes.add(createRectangle(mouseDownPoint1,mouseDownPoint2,colour));
+            mouseDownPoint1=new Point(mouseDownPoint1.x+1,mouseDownPoint1.y+1);
+            mouseDownPoint2=new Point(mouseDownPoint2.x-1,mouseDownPoint2.y-1);
+        }
+
+        repaint();
     }
 
     /**
@@ -58,7 +73,8 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
      */
     @Override
     public void mouseDragged(MouseEvent e) {
-
+        temp=createRectangle(mouseDownPoint1,e.getPoint(),Color.cyan);
+        repaint();
     }
 
     /**
@@ -69,6 +85,7 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        temp.draw(g);
         // Draw everything in the shapes list
         for(ictgradschool.industry.lab.swing.ex05.Rectangle r : shapes) {
             r.draw(g);
