@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Displays an animated balloon.
  */
 public class ExerciseFourPanel extends JPanel implements ActionListener, KeyListener {
-private List<Balloon> balloons;
+public static List<Balloon> balloons;
     private  Balloon balloon;
     private  JButton moveButton;
     private Timer timer;
@@ -27,14 +27,14 @@ private List<Balloon> balloons;
 
         this.balloons= new ArrayList<>();
 
-        int numBalloons = (int)(Math.random()*100);
+        int numBalloons = (int)(Math.random()*2)+1;
         System.out.println(numBalloons);
 
         for (int i = 0; i < numBalloons; i++) {
             balloons.add(new Balloon((int)(Math.random()*500),(int)(Math.random()*500)));
         }
         System.out.println(balloons.size());
-
+        repaint();
 
 //        this.balloon = new Balloon(30, 60);
 
@@ -58,7 +58,11 @@ private List<Balloon> balloons;
     @Override
     public void actionPerformed(ActionEvent e) {
 
-    balloon.move();
+        for (Balloon balloon:balloons
+        ) {
+            balloon.move();
+        }
+
 
         // Sets focus to the panel itself, rather than the JButton. This way, the panel can continue to generate key
         // events even after we've clicked the button.
@@ -75,7 +79,13 @@ private List<Balloon> balloons;
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        balloon.draw(g);
+        for (Balloon balloon:balloons
+             ) {
+            balloon.col2();
+//            balloon.collision();
+            balloon.draw(g);
+        }
+
         
         // Sets focus outside of actionPerformed so key presses work without pressing the button
         requestFocusInWindow();
@@ -95,23 +105,41 @@ private List<Balloon> balloons;
 
     switch (e.getKeyCode()){
         case 37:
-            balloon.setDirection(Direction.Left);
+            for (Balloon balloon:balloons
+            ) {
+                balloon.setDirection(Direction.Left);
+
+            }
             return;
         case 38:
-            balloon.setDirection(Direction.Up);
+            for (Balloon balloon:balloons
+            ) {
+                balloon.setDirection(Direction.Up);
+            }
             return;
         case 39:
-            balloon.setDirection(Direction.Right);
+            for (Balloon balloon:balloons
+            ) {
+                balloon.setDirection(Direction.Right);
+            }
             return;
         case 40:
-            balloon.setDirection(Direction.Down);
+            for (Balloon balloon:balloons
+            ) {
+                balloon.setDirection(Direction.Down);
+            }
             return;
         case 83:
-            if(balloon.getLastDirection()!=Direction.None){
+            for (Balloon balloon:balloons
+            ) {
+                if(balloon.getLastDirection()!=Direction.None){
                 balloon.setDirection(Direction.None);
             } else {
-                balloon.setDirection(balloon.getLastDirection());
+                balloon.setDirection(Direction.Left);
             }
+
+            }
+
 
     }
 //        System.out.println(direction);
