@@ -57,12 +57,8 @@ public class Balloon extends Rectangle{
      * @param direction the new direction
      */
     public void setDirection(Direction direction) {
-        if(direction!=Direction.None){
-            this.last=this.direction;
-            System.out.println(last);
-        }
-
-        this.direction = direction;
+        randomiseDirection();
+//        this.direction = direction;
     }
 //attempting collision detection.
     public void collision(){
@@ -83,6 +79,34 @@ public class Balloon extends Rectangle{
                 System.out.println("col2");
             }
         }
+    }
+
+    public void hitBound(int width,int height){
+        int nextX = x+speed;
+        int nextY = y+speed;
+
+        if(nextX<=0){
+            nextX=-speed;
+
+            speed=-speed;
+        }
+        else if (nextX+(8*size)>=width){
+            nextX=width-(8*size);
+            speed=-speed;
+        }
+
+        if(nextY<=0){
+            nextY=0;
+            speed=-speed;
+        }
+        else if (nextY+(9*size)>=height){
+            nextY=height-(9*size);
+            speed=-speed;
+        }
+
+        x=nextX;
+        y=nextY;
+
     }
 
     private void randomiseDirection(){
@@ -123,7 +147,7 @@ public class Balloon extends Rectangle{
             y = y + speed;
         }
         // TODOne Complete the code for the other directions
-        
+        hitBound(800,800);
     }
 
     /**

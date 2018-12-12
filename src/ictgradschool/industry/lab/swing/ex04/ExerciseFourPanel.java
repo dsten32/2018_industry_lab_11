@@ -27,7 +27,7 @@ public static List<Balloon> balloons;
 
         this.balloons= new ArrayList<>();
 
-        int numBalloons = (int)(Math.random()*2)+1;
+        int numBalloons = (int)(Math.random()*1)+1;
         System.out.println(numBalloons);
 
         for (int i = 0; i < numBalloons; i++) {
@@ -81,7 +81,7 @@ public static List<Balloon> balloons;
 
         for (Balloon balloon:balloons
              ) {
-            balloon.col2();
+//            balloon.col2();
 //            balloon.collision();
             balloon.draw(g);
         }
