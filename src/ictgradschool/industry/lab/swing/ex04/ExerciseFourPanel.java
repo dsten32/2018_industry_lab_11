@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ExerciseFourPanel extends JPanel implements ActionListener, KeyListener {
 public static List<Balloon> balloons;
-    private  Balloon balloon;
+//    private  Balloon balloon;
     private  JButton moveButton;
     private Timer timer;
 
@@ -27,7 +27,7 @@ public static List<Balloon> balloons;
 
         this.balloons= new ArrayList<>();
 
-        int numBalloons = (int)(Math.random()*1)+1;
+        int numBalloons = (int)(Math.random()*1)+3;
         System.out.println(numBalloons);
 
         for (int i = 0; i < numBalloons; i++) {
@@ -60,7 +60,7 @@ public static List<Balloon> balloons;
 
         for (Balloon balloon:balloons
         ) {
-            balloon.move();
+                balloon.move();
         }
 
 
@@ -103,46 +103,42 @@ public static List<Balloon> balloons;
 //    int direction  ;
 //        System.out.println(last);
 
-    switch (e.getKeyCode()){
-        case 37:
-            for (Balloon balloon:balloons
-            ) {
-                balloon.setDirection(Direction.Left);
+        switch (e.getKeyCode()){
+            case 37:
+                for (Balloon balloon:balloons
+                ) {
+                    balloon.setDirection(Direction.Left);
+                }
+                return;
+            case 38:
+                for (Balloon balloon:balloons
+                ) {
+                    balloon.setDirection(Direction.Up);
+                }
+                return;
+            case 39:
+                for (Balloon balloon:balloons
+                ) {
+                    balloon.setDirection(Direction.Right);
+                }
+                return;
+            case 40:
+                for (Balloon balloon:balloons
+                ) {
+                    balloon.setDirection(Direction.Down);
+                }
+                return;
+            case 83:
+                for (Balloon balloon:balloons
+                ) {
+                    if(balloon.getLastDirection()!=Direction.None){
+                        balloon.setDirection(Direction.None);
+                    } else {
+                        balloon.setDirection(Direction.Left);
+                    }
 
-            }
-            return;
-        case 38:
-            for (Balloon balloon:balloons
-            ) {
-                balloon.setDirection(Direction.Up);
-            }
-            return;
-        case 39:
-            for (Balloon balloon:balloons
-            ) {
-                balloon.setDirection(Direction.Right);
-            }
-            return;
-        case 40:
-            for (Balloon balloon:balloons
-            ) {
-                balloon.setDirection(Direction.Down);
-            }
-            return;
-        case 83:
-            for (Balloon balloon:balloons
-            ) {
-                if(balloon.getLastDirection()!=Direction.None){
-                balloon.setDirection(Direction.None);
-            } else {
-                balloon.setDirection(Direction.Left);
-            }
-
-            }
-
-
-    }
-//        System.out.println(direction);
+                }
+        }
     }
 
     @Override

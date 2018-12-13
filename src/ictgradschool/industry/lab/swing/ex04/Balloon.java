@@ -1,5 +1,6 @@
 package ictgradschool.industry.lab.swing.ex04;
 
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -57,56 +58,56 @@ public class Balloon extends Rectangle{
      * @param direction the new direction
      */
     public void setDirection(Direction direction) {
-        randomiseDirection();
-//        this.direction = direction;
+//        randomiseDirection();
+        this.direction = direction;
     }
 //attempting collision detection.
     public void collision(){
         for (Balloon balloon:ExerciseFourPanel.balloons
         ) {
-            if (this.intersects(balloon)){
+            if (balloon != this && this.intersects(balloon)){
                 System.out.println("collided");
-                randomiseDirection();
+//                randomiseDirection();
+                if (direction==Direction.Left){
+                    setDirection(Direction.Right);
+                } else if (direction==Direction.Right) {
+                    setDirection(Direction.Left);
+                }
 
             }
         }
     }
 
-    public void col2(){
+    public void collision2(){
         for (Balloon balloon:ExerciseFourPanel.balloons
         ) {
-            if(this.contains(balloon.getPosition())){
-                System.out.println("col2");
+            if(balloon != this && this.contains(balloon.getPosition())){
+                System.out.println("coll2");
+//                randomiseDirection();
+                if (direction==Direction.Left){
+                    this.setDirection(Direction.Right);
+                } else if (direction==Direction.Right) {
+                    this.setDirection(Direction.Left);
+                }
             }
         }
     }
 
     public void hitBound(int width,int height){
-        int nextX = x+speed;
-        int nextY = y+speed;
 
-        if(nextX<=0){
-            nextX=-speed;
-
-            speed=-speed;
+        if(x<=0){
+            setDirection(Direction.Right);
         }
-        else if (nextX+(8*size)>=width){
-            nextX=width-(8*size);
-            speed=-speed;
+        else if (x+(8*size)>=width){
+            setDirection(Direction.Left);
         }
 
-        if(nextY<=0){
-            nextY=0;
-            speed=-speed;
+        if(y<=0){
+setDirection(Direction.Down);
         }
-        else if (nextY+(9*size)>=height){
-            nextY=height-(9*size);
-            speed=-speed;
+        else if (y+(9*size)>=height){
+            setDirection(Direction.Up);
         }
-
-        x=nextX;
-        y=nextY;
-
     }
 
     private void randomiseDirection(){
@@ -119,6 +120,7 @@ public class Balloon extends Rectangle{
             case 2: setDirection(Direction.Up);
             return;
             case 3: setDirection(Direction.Down);
+            return;
         }
     }
 
@@ -134,20 +136,18 @@ public class Balloon extends Rectangle{
         if (direction == Direction.Right) {
             x = x + speed;
         }
-
         if (direction == Direction.Left) {
             x = x - speed;
         }
-
         if (direction == Direction.Up) {
             y = y - speed;
         }
-
         if (direction == Direction.Down) {
             y = y + speed;
         }
         // TODOne Complete the code for the other directions
         hitBound(800,800);
+        collision();
     }
 
     /**

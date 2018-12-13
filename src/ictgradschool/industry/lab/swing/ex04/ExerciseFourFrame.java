@@ -18,6 +18,7 @@ public class ExerciseFourFrame extends JFrame {
      * @param height the height of the frame
      */
     public ExerciseFourFrame(String title, int x, int y, int width, int height) {
+
         setTitle(title);
         setBounds(x, y, width, height);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,6 +28,7 @@ public class ExerciseFourFrame extends JFrame {
         visibleArea.add(frameContent);
         pack();
     }
+
 
     /**
      * Program entry point.
