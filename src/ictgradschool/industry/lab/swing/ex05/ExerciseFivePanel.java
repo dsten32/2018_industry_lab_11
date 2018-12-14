@@ -85,11 +85,16 @@ repaint();
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        temp.draw(g);
+
         // Draw everything in the shapes list
-        for(ictgradschool.industry.lab.swing.ex05.Rectangle r : shapes) {
-            r.draw(g);
+        try {
+            temp.draw(g);
+            for(ictgradschool.industry.lab.swing.ex05.Rectangle r : shapes) {
+                r.draw(g);
+            }
+        } catch (NullPointerException e){
         }
+
 
         // TODO If we're currently dragging out a new rectangle, draw its current size in red.
         // Hint: You can just use the createRectangle method, and draw the rectangle that you get back from it.

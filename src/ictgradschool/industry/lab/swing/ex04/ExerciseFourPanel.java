@@ -81,8 +81,6 @@ public static List<Balloon> balloons;
 
         for (Balloon balloon:balloons
              ) {
-//            balloon.col2();
-//            balloon.collision();
             balloon.draw(g);
         }
 
