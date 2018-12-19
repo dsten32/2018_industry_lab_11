@@ -29,7 +29,7 @@ private Rectangle temp;
     public ExerciseFivePanel() {
         setBackground(Color.white);
 
-        // TODO Add this panel as a mouse listener and mouse motion listener to itself.
+        // TODOne Add this panel as a mouse listener and mouse motion listener to itself.
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
 
@@ -37,8 +37,8 @@ private Rectangle temp;
     }
 
     /**
-     * TODO When the user presses their mouse down on the panel, record the location of that mouse press.
-     * TODO Then, repaint the screen.
+     * TODOne When the user presses their mouse down on the panel, record the location of that mouse press.
+     * TODOne Then, repaint the screen.
      */
     @Override
     public void mousePressed(MouseEvent e) {
@@ -47,9 +47,9 @@ repaint();
     }
 
     /**
-     * TODO When the user releases their mouse down on the panel, record the location of that mouse release.
-     * TODO Then, call the createRectangle method appropriately to create a Rectangle, and add it to the shapes list.
-     * TODO Then, repaint the screen.
+     * TODOne When the user releases their mouse down on the panel, record the location of that mouse release.
+     * TODOne Then, call the createRectangle method appropriately to create a Rectangle, and add it to the shapes list.
+     * TODOne Then, repaint the screen.
      */
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -67,13 +67,13 @@ repaint();
     }
 
     /**
-     * TODO When the user drags the mouse (moves it while it's pressed), record the current location of that mouse drag,
-     * TODO and repaint the screen.
+     * TODOne When the user drags the mouse (moves it while it's pressed), record the current location of that mouse drag,
+     * TODOne and repaint the screen.
      * @param e
      */
     @Override
     public void mouseDragged(MouseEvent e) {
-        temp=createRectangle(mouseDownPoint1,e.getPoint(),Color.cyan);
+        temp=createRectangle(mouseDownPoint1,e.getPoint(),Color.red);
         repaint();
     }
 
@@ -96,7 +96,7 @@ repaint();
         }
 
 
-        // TODO If we're currently dragging out a new rectangle, draw its current size in red.
+        // TODOne If we're currently dragging out a new rectangle, draw its current size in red.
         // Hint: You can just use the createRectangle method, and draw the rectangle that you get back from it.
 
     }

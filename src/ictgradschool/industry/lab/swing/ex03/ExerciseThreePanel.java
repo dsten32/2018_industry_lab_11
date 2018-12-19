@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * A JPanel that draws some houses using a Graphics object.
  *
- * TODO Complete this class. No hints this time :)
+ * TODOne Complete this class. No hints this time :)
  */
 public class ExerciseThreePanel extends JPanel {
 
@@ -67,7 +67,7 @@ public class ExerciseThreePanel extends JPanel {
      */
     private void drawHouse(Graphics g, int left, int top, int size) {
 
-        // TODO Draw a house, as shown in the lab handout.
+        // TODOne Draw a house, as shown in the lab handout.
 
 
         //roof
